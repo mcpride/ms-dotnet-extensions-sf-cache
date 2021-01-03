@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="FabricCacheSvcPkg"
+                 Version="1.0.0"
+                 xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ServiceTypes>
+    <StatefulServiceType ServiceTypeName="FabricCacheSvcType" HasPersistedState="true" />
+  </ServiceTypes>
+  <CodePackage Name="Code" Version="1.0.0">
+    <EntryPoint>
+      <ExeHost>
+        <Program>MS.Extensions.Caching.ServiceFabric.exe</Program>
+      </ExeHost>
+    </EntryPoint>
+  </CodePackage>
+  <ConfigPackage Name="Config" Version="1.0.0" />
+  <Resources>
+    <Endpoints>
+      <!-- Dieser Endpunkt wird vom Kommunikationslistener zum Abrufen des Ports verwendet, an dem 
+           gelauscht werden soll. Wenn Ihr Dienst partitioniert ist, beachten Sie bitte, dass dieser Port mit 
+           Replikaten anderer Partitionen gemeinsam verwendet wird, die in Ihrem Code platziert wurden. -->
+      <Endpoint Name="ServiceEndpoint" />
+      <!-- Dieser Endpunkt wird vom Replikator zum Replizieren des Zustands Ihres Diensts verwendet.
+           Dieser Endpunkt wird über einen Konfigurationsabschnitt "ReplicatorSettings" in der Datei "Settings.xml"
+           unter dem "ConfigPackage" konfiguriert. -->
+      <Endpoint Name="ReplicatorEndpoint" />
+    </Endpoints>
+  </Resources>
+</ServiceManifest>
