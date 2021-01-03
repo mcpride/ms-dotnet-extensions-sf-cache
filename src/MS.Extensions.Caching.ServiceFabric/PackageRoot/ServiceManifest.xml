@@ -17,13 +17,7 @@
   <ConfigPackage Name="Config" Version="1.0.0" />
   <Resources>
     <Endpoints>
-      <!-- Dieser Endpunkt wird vom Kommunikationslistener zum Abrufen des Ports verwendet, an dem 
-           gelauscht werden soll. Wenn Ihr Dienst partitioniert ist, beachten Sie bitte, dass dieser Port mit 
-           Replikaten anderer Partitionen gemeinsam verwendet wird, die in Ihrem Code platziert wurden. -->
       <Endpoint Name="ServiceEndpoint" />
-      <!-- Dieser Endpunkt wird vom Replikator zum Replizieren des Zustands Ihres Diensts verwendet.
-           Dieser Endpunkt wird über einen Konfigurationsabschnitt "ReplicatorSettings" in der Datei "Settings.xml"
-           unter dem "ConfigPackage" konfiguriert. -->
       <Endpoint Name="ReplicatorEndpoint" />
     </Endpoints>
   </Resources>

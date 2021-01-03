@@ -5,9 +5,9 @@
                      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
-    <Parameter Name="FabricCache_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="FabricCache_PartitionCount" DefaultValue="1" />
+    <Parameter Name="FabricCache_MinReplicaSetSize" DefaultValue="1" />
     <Parameter Name="FabricCache_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FabricCache_PartitionCount" DefaultValue="1" />
   </Parameters>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="FabricCacheSvcPkg" ServiceManifestVersion="1.0.0" />
@@ -16,7 +16,7 @@
   <DefaultServices>
     <Service Name="FabricCache" ServicePackageActivationMode="ExclusiveProcess">
       <StatefulService ServiceTypeName="FabricCacheSvcType" TargetReplicaSetSize="[FabricCache_TargetReplicaSetSize]" MinReplicaSetSize="[FabricCache_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[FabricCache_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+        <UniformInt64Partition PartitionCount="[FabricCache_PartitionCount]" LowKey="0" HighKey="4294967295" />
       </StatefulService>
     </Service>
   </DefaultServices>
