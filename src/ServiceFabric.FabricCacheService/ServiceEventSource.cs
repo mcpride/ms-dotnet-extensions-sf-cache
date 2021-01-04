@@ -1,26 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Fabric;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace FabricCache
+namespace MS.Extensions.Caching.ServiceFabric
 {
-    [EventSource(Name = "MyCompany-MS.Extensions.Caching.ServiceFabric-FabricCache")]
+    [EventSource(Name = "MS.Extensions.Caching.ServiceFabric.FabricCacheService")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();
 
-        // Der Instanzkonstruktor ist privat, um Singletonsemantik zu erzwingen.
         private ServiceEventSource() : base() { }
 
         #region Schlüsselwörter
-        // Ereignisschlüsselwörter können zum Kategorisieren von Ereignissen verwendet werden. 
-        // Jedes Schlüsselwort ist eine Bitkennzeichnung. Ein einzelnes Ereignis kann mehreren Schlüsselwörtern (über die Eigenschaft "EventAttribute.Keywords") zugeordnet werden.
-        // Schlüsselwörter müssen als eine öffentliche Klasse namens "Keywords" in der "EventSource" definiert werden, die sie verwendet.
         public static class Keywords
         {
             public const EventKeywords Requests = (EventKeywords)0x1L;
@@ -29,13 +20,6 @@ namespace FabricCache
         #endregion
 
         #region Ereignisse
-        // Definiert eine Instanzmethode für jedes Ereignis, das Sie aufzeichnen möchten, und wendet ein Attribut [Event] darauf an.
-        // Der Methodenname ist der Name des Ereignisses.
-        // Übergeben Sie alle Parameter, die Sie mit dem Ereignis aufzeichnen möchten (nur primitive Integertypen, "DateTime", GUID und Zeichenfolgen sind zulässig).
-        // Jede Ereignismethodenimplementierung sollte überprüfen, ob die Ereignisquelle aktiviert ist. Wenn dies der Fall ist, sollte die Methode "WriteEvent()" zum Auslösen des Ereignisses aufgerufen werden.
-        // Die Anzahl und die Typen der an jede Ereignismethode übergebenen Argumente müssen genau mit den Elementen übereinstimmen, die an "WriteEvent()" übergeben werden.
-        // Versehen Sie alle Methoden, die kein Ereignis definieren, mit dem Attribut [NonEvent].
-        // Weitere Informationen finden Sie unter https://msdn.microsoft.com/de-de/library/system.diagnostics.tracing.eventsource.aspx.
 
         [NonEvent]
         public void Message(string message, params object[] args)
@@ -75,9 +59,6 @@ namespace FabricCache
             }
         }
 
-        // Für sehr häufig auftretende Ereignisse kann es vorteilhaft sein, Ereignisse mithilfe der WriteEventCore-API auszulösen.
-        // Dies führt zu einer effizienteren Parameterverarbeitung, erfordert aber die explizite Zuweisung der EventData-Struktur und unsicheren Code.
-        // Definieren Sie zum Aktivieren dieses Codepfads das bedingte Kompilierungssymbol UNSAFE, und aktivieren Sie die Unterstützung von unsicherem Code in den Projekteigenschaften.
         private const int ServiceMessageEventId = 2;
         [Event(ServiceMessageEventId, Level=EventLevel.Informational, Message="{7}")]
         private
@@ -129,9 +110,6 @@ namespace FabricCache
             WriteEvent(ServiceHostInitializationFailedEventId, exception);
         }
 
-        // Ein Ereignispaar, das das gleiche Namenpräfix mit einem Suffix "Start"/"Stop" gemeinsam verwendet, markiert implizit Begrenzungen einer Ereignisnachverfolgungsaktivität.
-        // Diese Aktivitäten können automatisch von Debug- und Profilerstellungstools abgerufen werden, um die Ausführungszeit, untergeordnete Aktivitäten,
-        // und andere Statistiken zu berechnen.
         private const int ServiceRequestStartEventId = 5;
         [Event(ServiceRequestStartEventId, Level = EventLevel.Informational, Message = "Service request '{0}' started", Keywords = Keywords.Requests)]
         public void ServiceRequestStart(string requestTypeName)

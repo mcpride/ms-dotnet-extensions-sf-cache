@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "FabricCache", "FabricCache\FabricCache.sfproj", "{632155C8-6CD2-4633-AFDE-8F22D6F2D7F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Extensions.Caching.ServiceFabric", "MS.Extensions.Caching.ServiceFabric\MS.Extensions.Caching.ServiceFabric.csproj", "{6FF37A62-9AB7-4885-A805-6427867FBCA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MS.Extensions.Caching.ServiceFabric.FabricCacheService", "ServiceFabric.FabricCacheService\MS.Extensions.Caching.ServiceFabric.FabricCacheService.csproj", "{6FF37A62-9AB7-4885-A805-6427867FBCA8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MS.Extensions.Caching.ServiceFabric.Abstractions", "ServiceFabric.Abstractions\MS.Extensions.Caching.ServiceFabric.Abstractions.csproj", "{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{002063A1-5A3E-4E71-B0C9-EC79FB33B562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Extensions.Caching.ServiceFabric.Client", "ServiceFabric.Client\MS.Extensions.Caching.ServiceFabric.Client.csproj", "{C42BB6B4-1540-4444-A9CF-641DFC6F9239}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,9 +37,28 @@ Global
 		{6FF37A62-9AB7-4885-A805-6427867FBCA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FF37A62-9AB7-4885-A805-6427867FBCA8}.Release|x64.ActiveCfg = Release|Any CPU
 		{6FF37A62-9AB7-4885-A805-6427867FBCA8}.Release|x64.Build.0 = Release|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Debug|x64.Build.0 = Debug|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Release|x64.ActiveCfg = Release|Any CPU
+		{B19DC8AB-0BF2-4E24-A653-3F9729CC08F0}.Release|x64.Build.0 = Release|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Debug|x64.Build.0 = Debug|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Release|x64.ActiveCfg = Release|Any CPU
+		{C42BB6B4-1540-4444-A9CF-641DFC6F9239}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{632155C8-6CD2-4633-AFDE-8F22D6F2D7F2} = {002063A1-5A3E-4E71-B0C9-EC79FB33B562}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {695A3292-1D80-4588-B9E5-46115466CB2B}

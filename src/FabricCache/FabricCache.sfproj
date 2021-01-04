@@ -32,7 +32,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MS.Extensions.Caching.ServiceFabric\MS.Extensions.Caching.ServiceFabric.csproj" />
+    <ProjectReference Include="..\ServiceFabric.FabricCacheService\MS.Extensions.Caching.ServiceFabric.FabricCacheService.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>
