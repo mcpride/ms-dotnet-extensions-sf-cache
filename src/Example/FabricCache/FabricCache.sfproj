@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" />
+  <Import Project="..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props" Condition="Exists('..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>632155c8-6cd2-4633-afde-8f22d6f2d7f2</ProjectGuid>
     <ProjectVersion>2.5</ProjectVersion>
@@ -32,16 +32,16 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceFabric.FabricCacheService\MS.Extensions.Caching.ServiceFabric.FabricCacheService.csproj" />
+    <ProjectReference Include="..\FabricCacheService\FabricCacheService.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>
     <ApplicationProjectTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets</ApplicationProjectTargetsPath>
   </PropertyGroup>
   <Import Project="$(ApplicationProjectTargetsPath)" Condition="Exists('$(ApplicationProjectTargetsPath)')" />
-  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" />
+  <Import Project="..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets" Condition="Exists('..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" />
   <Target Name="ValidateMSBuildFiles" BeforeTargets="PrepareForBuild">
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" Text="Die Datei &quot;..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props&quot; wurde nicht gefunden. Stellen Sie das NuGet-Paket &quot;Microsoft.VisualStudio.Azure.Fabric.MSBuild&quot; wieder her." />
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" Text="Die Datei &quot;..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets&quot; wurde nicht gefunden. Stellen Sie das NuGet-Paket &quot;Microsoft.VisualStudio.Azure.Fabric.MSBuild&quot; wieder her." />
+    <Error Condition="!Exists('..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" Text="Die Datei &quot;..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.props&quot; wurde nicht gefunden. Stellen Sie das NuGet-Paket &quot;Microsoft.VisualStudio.Azure.Fabric.MSBuild&quot; wieder her." />
+    <Error Condition="!Exists('..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" Text="Die Datei &quot;..\..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.7.3\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets&quot; wurde nicht gefunden. Stellen Sie das NuGet-Paket &quot;Microsoft.VisualStudio.Azure.Fabric.MSBuild&quot; wieder her." />
   </Target>
 </Project>

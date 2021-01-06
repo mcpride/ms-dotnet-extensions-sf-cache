@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Fabric;
 
-namespace MS.Extensions.Caching.ServiceFabric
+namespace FabricCache
 {
     [EventSource(Name = "MS.Extensions.Caching.ServiceFabric.FabricCacheService")]
     internal sealed class ServiceEventSource : EventSource

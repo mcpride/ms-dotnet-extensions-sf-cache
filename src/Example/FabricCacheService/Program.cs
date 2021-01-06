@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace MS.Extensions.Caching.ServiceFabric
+namespace FabricCache
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace MS.Extensions.Caching.ServiceFabric
         {
             try
             {
-                ServiceRuntime.RegisterServiceAsync("FabricCacheServiceType",
+                ServiceRuntime.RegisterServiceAsync($"{nameof(FabricCacheService)}Type",
                     context => new FabricCacheService(context)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, nameof(FabricCacheService));
