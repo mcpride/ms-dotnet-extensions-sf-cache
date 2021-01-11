@@ -7,14 +7,14 @@ using Microsoft.Extensions.Logging;
 namespace MS.Extensions.Caching.ServiceFabric
 {
 
-    internal class FabricCacheServiceHandler : IFabricCacheService, IDisposable
+    internal class FabricCacheServiceHandler : ICacheService, IDisposable
     {
         private readonly TimeSpan _defaultTimeout;
-        private readonly IFabricCacheStorage _storage;
+        private readonly ICacheStorage _storage;
         private readonly ILogger<FabricCacheServiceHandler> _logger;
         private readonly CancellationTokenSource _backgroundCts;
 
-        public FabricCacheServiceHandler(IFabricCacheStorage storage, ILogger<FabricCacheServiceHandler> logger)
+        public FabricCacheServiceHandler(ICacheStorage storage, ILogger<FabricCacheServiceHandler> logger)
         {
             _storage = storage ?? throw new ArgumentNullException(nameof(storage));
             _logger = logger;
@@ -28,7 +28,7 @@ namespace MS.Extensions.Caching.ServiceFabric
             _logger?.LogTrace("Getting cache item with key '{Key}' ...", key);
             var result = await _storage.GetCacheItemAsync(key, clientId, tenantId, _defaultTimeout, _backgroundCts.Token);
             _logger?.LogTrace("Getting cache item with key '{Key}' done!", key);
-            return result?.Value;
+            return result;
         }
 
         public async Task RefreshCacheItemAsync(string key, string clientId, string tenantId)
@@ -48,13 +48,7 @@ namespace MS.Extensions.Caching.ServiceFabric
         public async Task SetCacheItemAsync(string key, byte[] value, DistributedCacheEntryOptions options, string clientId, string tenantId)
         {
             _logger?.LogTrace("Setting cache item with key '{Key}' ...", key);
-            await _storage.SetCacheItemAsync(key, new FabricCacheStorageEntry
-            {
-                Value = value,
-                AbsoluteExpiration = options.AbsoluteExpiration,
-                AbsoluteExpirationRelativeToNow = options.AbsoluteExpirationRelativeToNow,
-                SlidingExpiration = options.SlidingExpiration
-            }, clientId, tenantId, _defaultTimeout, _backgroundCts.Token);
+            await _storage.SetCacheItemAsync(key, value, options, clientId, tenantId, _defaultTimeout, _backgroundCts.Token);
             _logger?.LogTrace("Setting cache item with key '{Key}' done!", key);
         }
 

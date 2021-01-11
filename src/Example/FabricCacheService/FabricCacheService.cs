@@ -29,7 +29,7 @@ namespace FabricCache
                 new ServiceReplicaListener(context => 
                     new FabricTransportServiceRemotingListener(
                         context, 
-                        _serviceProvider.GetRequiredService<IFabricCacheService>()),
+                        _serviceProvider.GetRequiredService<ICacheService>()),
                     "ServiceEndpoint")
             };
         }

@@ -6,8 +6,8 @@ namespace MS.Extensions.Caching.ServiceFabric
     {
         public static IServiceCollection AddFabricCacheServices(this IServiceCollection services)
         {
-            services.AddTransient<IFabricCacheStorage, FabricCacheStorage>();
-            services.AddTransient<IFabricCacheService, FabricCacheServiceHandler>();
+            services.AddTransient<ICacheStorage, FabricCacheStorage>();
+            services.AddTransient<ICacheService, FabricCacheServiceHandler>();
             return services;
         }
     }

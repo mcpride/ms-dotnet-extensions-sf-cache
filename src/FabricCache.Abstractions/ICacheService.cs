@@ -5,7 +5,7 @@ using Microsoft.ServiceFabric.Services.Remoting;
 
 namespace MS.Extensions.Caching.ServiceFabric
 {
-    public interface IFabricCacheService : IService
+    public interface ICacheService : IService
     {
         Task<byte[]> GetCacheItemAsync(string key, string clientId, string tenantId);
 

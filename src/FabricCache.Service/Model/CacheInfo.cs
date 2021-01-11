@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MS.Extensions.Caching.ServiceFabric
+namespace MS.Extensions.Caching.ServiceFabric.Model
 {
-    internal class FabricCacheInfo
+    internal class CacheInfo
     {
         public string ClientId { get; set; }
         public string TenantId { get; set; }
